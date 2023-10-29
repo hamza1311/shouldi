@@ -1,24 +1,25 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+const generateButton = document.querySelector('#generate-btn')!
+const addButton = document.querySelector('#add-btn')!
+const optionValue = document.querySelector('#option-value')! as HTMLInputElement
+const list = document.querySelector('#list')!
+const winnerP = document.querySelector('#winner')!
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+addButton?.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (optionValue.value === '') return alert('Please enter a value')
+    const listRow = document.querySelector('#list-row') as HTMLTemplateElement;
+    const clone = listRow.content.cloneNode(true) as HTMLLIElement;
+    const li = clone.querySelector('li')
+    li!.textContent = optionValue.value
+    list?.appendChild(clone)
+    optionValue.value = ''
+    optionValue.focus()
+})
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+generateButton?.addEventListener('click', () => {
+    const li = [...list.querySelectorAll('li')];
+    const random = Math.floor(Math.random() * li.length)
+    const winner = li[random]
+    winnerP.textContent = winner.textContent
+    winnerP.setAttribute('data-hint', 'false')
+})

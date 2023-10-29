@@ -1,13 +1,51 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="styles/index.scss">
+    <title>ShouldI?</title>
+</head>
+<body class="text-primary dark:text-primary-dark bg-background-light dark:bg-background-dark">
+
+<div class="flex flex-col items-center justify-center min-h-screen p-4 gap-6">
+    <h1 class="text-3xl font-bold mb-4">
+        What should I do?
+    </h1>
+    <div class="list-container w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-4 text-center">Options:</h2>
+        <ul id="list" class="list-inside list-none">
+
+        </ul>
+    </div>
+    <form class="w-full max-w-md">
+        <div class="flex gap-2 b-4">
+            <input id="option-value"
+                    type="text"
+                   class="flex h-10 bg-background-light dark:bg-background-dark text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full border border-gray-300 p-2 rounded-md"
+                   placeholder="Enter an option...">
+            <button id="add-btn" class="text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-secondary-light dark:hover:bg-secondary-dark hover:text-secondary-dark dark:hover:text-secondary-light h-10 px-4 py-2 bg-blue-500 text-white rounded-md">
+                Add
+            </button>
+        </div>
+    </form>
+    <button id="generate-btn" class="text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-secondary-light dark:hover:bg-secondary-dark hover:text-secondary-dark dark:hover:text-secondary-light h-10 mb-4 px-8 py-2 bg-green-500 text-white rounded-md">
+        Tell me!
+    </button>
+    <div class="w-full max-w-md p-4 border border-gray-300 rounded-md">
+        <h2 class="text-xl font-bold mb-2">
+            You should do:
+        </h2>
+        <p id="winner" class="text-primary-dark font-bold" data-hint="true">
+            Click the 'Tell me' button
+        </p>
+
+    </div>
+</div>
+<script type="module" src="/src/main.ts"></script>
+<template id="list-row">
+    <li class="border border-gray-500 p-2 mb-2 rounded-md"></li>
+</template>
+</body>
 </html>

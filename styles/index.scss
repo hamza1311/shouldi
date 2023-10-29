@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// if ul has no li, hide the container
+.list-container:not(.list-container:has(li)) {
+  display: none;
+}
+
+[data-hint="true"] {
+  opacity: 0.8;
+  font-weight: normal;
+}
